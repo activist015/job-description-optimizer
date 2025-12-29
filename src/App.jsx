@@ -26,10 +26,10 @@ export default function JobDescOptimizer() {
   // Load saved state from memory
   useEffect(() => {
     const saved = {
-      usageCount: parseInt(sessionStorage.getItem('usageCount') || '0'),
-      isPremium: sessionStorage.getItem('isPremium') === 'true',
-      premiumType: sessionStorage.getItem('premiumType') || '',
-      remainingOptimizations: parseInt(sessionStorage.getItem('remainingOptimizations') || '0')
+      usageCount: parseInt(localStorage.getItem('usageCount') || '0'),
+      isPremium: localStorage.getItem('isPremium') === 'true',
+      premiumType: localStorage.getItem('premiumType') || '',
+      remainingOptimizations: parseInt(localStorage.getItem('remainingOptimizations') || '0')
     };
     
     setUsageCount(saved.usageCount);
@@ -41,19 +41,19 @@ export default function JobDescOptimizer() {
   // Save state to memory
   const saveState = (updates) => {
     if (updates.usageCount !== undefined) {
-      sessionStorage.setItem('usageCount', updates.usageCount.toString());
+      localStorage.setItem('usageCount', updates.usageCount.toString());
       setUsageCount(updates.usageCount);
     }
     if (updates.isPremium !== undefined) {
-      sessionStorage.setItem('isPremium', updates.isPremium.toString());
+      localStorage.setItem('isPremium', updates.isPremium.toString());
       setIsPremium(updates.isPremium);
     }
     if (updates.premiumType !== undefined) {
-      sessionStorage.setItem('premiumType', updates.premiumType);
+      localStorage.setItem('premiumType', updates.premiumType);
       setPremiumType(updates.premiumType);
     }
     if (updates.remainingOptimizations !== undefined) {
-      sessionStorage.setItem('remainingOptimizations', updates.remainingOptimizations.toString());
+      localStorage.setItem('remainingOptimizations', updates.remainingOptimizations.toString());
       setRemainingOptimizations(updates.remainingOptimizations);
     }
   };
